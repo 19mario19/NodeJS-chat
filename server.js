@@ -23,6 +23,11 @@ let endPointUser = "/api/user"
 app.use(endPoint, postRoutes)
 app.use(endPointUser, userRoutes)
 
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://nodejs-chat.onrender.com"
+    : "http://localhost:4000"
+
 // connect to db
 async function connectDb() {
   try {
@@ -30,7 +35,7 @@ async function connectDb() {
     // listen to requests
     app.listen(PORT, () => {
       console.log(`Connected and listen on PORT: ${PORT}`)
-      console.log(`http://localhost:${PORT}${endPoint}`)
+      console.log(`${baseUrl}${endPoint}`)
     })
   } catch (err) {
     console.log(err)
