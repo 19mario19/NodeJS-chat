@@ -5,7 +5,7 @@ async function requireAuth(req, res, next) {
   const { authorization } = req.headers
 
   if (!authorization) {
-    res.status(401).json({ error: "Authorization token required" })
+    return res.status(401).json({ error: "Authorization token required" })
   }
 
   // take the token, it is "Bearer tokenItself"
