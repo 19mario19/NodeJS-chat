@@ -1,4 +1,5 @@
 const express = require("express")
+const cors = require("cors")
 const { default: mongoose } = require("mongoose")
 require("dotenv").config()
 const postRoutes = require("./routes/posts")
@@ -7,6 +8,7 @@ const userRoutes = require("./routes/user")
 const PORT = process.env.PORT || 4000
 
 const app = express()
+app.use(cors())
 
 // to add body to the request
 app.use(express.json())
